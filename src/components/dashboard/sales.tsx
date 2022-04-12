@@ -99,7 +99,9 @@ export const Sales = (props: any) => {
             position: "relative",
           }}
         >
+          {/* eslint-disable */}
           <Bar data={data} options={options} />
+          {/* eslint-enable */}
         </Box>
       </CardContent>
       <Divider />

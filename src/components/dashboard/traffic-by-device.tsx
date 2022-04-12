@@ -74,7 +74,9 @@ export const TrafficByDevice = (props: any) => {
             position: "relative",
           }}
         >
+          {/* eslint-disable */}
           <Doughnut data={data} options={options} />
+          {/* eslint-enable */}
         </Box>
         <Box
           sx={{

@@ -5,6 +5,8 @@ import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
+import { SessionProvider } from "next-auth/react";
+
 import { createEmotionCache } from "../utils/create-emotion-cache";
 import { theme } from "../theme";
 import type { Page } from "../types/page";
@@ -16,7 +18,11 @@ interface MyAppProps extends AppProps {
   Component: Page;
 }
 
-const App = ({ Component, emotionCache = clientSideEmotionCache, pageProps }: MyAppProps) => {
+const App = ({
+  Component,
+  emotionCache = clientSideEmotionCache,
+  pageProps: { session, ...pageProps },
+}: MyAppProps) => {
   const getLayout = Component.getLayout ?? ((page) => page);
 
   return (
@@ -25,12 +31,14 @@ const App = ({ Component, emotionCache = clientSideEmotionCache, pageProps }: My
         <title>Material Kit Pro</title>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
-      <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          {getLayout(<Component {...pageProps} />)}
-        </ThemeProvider>
-      </LocalizationProvider>
+      <SessionProvider session={session}>
+        <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            {getLayout(<Component {...pageProps} />)}
+          </ThemeProvider>
+        </LocalizationProvider>
+      </SessionProvider>
     </CacheProvider>
   );
 };

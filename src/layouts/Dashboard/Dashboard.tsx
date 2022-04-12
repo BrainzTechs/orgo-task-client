@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Box } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { DashboardNavbar } from "./dashboard-navbar";
-import { DashboardSidebar } from "./dashboard-sidebar";
+import { DashboardNavbar } from "./components/Navbar";
+import { DashboardSidebar } from "./components/Sidebar";
 
 const DashboardLayoutRoot = styled("div")(({ theme }) => ({
   display: "flex",
@@ -14,7 +14,7 @@ const DashboardLayoutRoot = styled("div")(({ theme }) => ({
   },
 }));
 
-export const DashboardLayout = (props: any) => {
+const DashboardLayout = (props: any) => {
   const { children } = props;
   const [isSidebarOpen, setSidebarOpen] = useState(true);
 
@@ -37,3 +37,5 @@ export const DashboardLayout = (props: any) => {
     </>
   );
 };
+
+export default DashboardLayout;
