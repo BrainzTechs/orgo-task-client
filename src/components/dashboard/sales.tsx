@@ -32,7 +32,7 @@ export const Sales = (props: any) => {
     labels: ["1 Aug", "2 Aug", "3 Aug", "4 Aug", "5 Aug", "6 Aug", "7 aug"],
   };
 
-  const options = {
+  const options: any = {
     animation: false,
     cornerRadius: 20,
     layout: { padding: 0 },
@@ -99,9 +99,7 @@ export const Sales = (props: any) => {
             position: "relative",
           }}
         >
-          {/* eslint-disable */}
-          <Bar data={data} options={options} />
-          {/* eslint-enable */}
+          <Bar options={options} data={data} />
         </Box>
       </CardContent>
       <Divider />

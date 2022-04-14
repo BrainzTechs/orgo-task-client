@@ -20,6 +20,7 @@ import { getInitials } from "../../utils/get-initials";
 interface Customer {
   id: string;
   name: string;
+  avatarUrl: string;
   email: string;
   address: any;
   phone: string;
@@ -31,12 +32,12 @@ interface Props {
 }
 
 export const CustomerListResults = ({ customers, ...rest }: Props) => {
-  const [selectedCustomerIds, setSelectedCustomerIds] = useState<any[] | []>([]);
+  const [selectedCustomerIds, setSelectedCustomerIds] = useState<string[]>([]);
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(0);
 
   const handleSelectAll = (event: any) => {
-    let newSelectedCustomerIds = [];
+    let newSelectedCustomerIds: string[] = [];
 
     if (event.target.checked) {
       newSelectedCustomerIds = customers.map((customer) => customer.id);
@@ -103,11 +104,11 @@ export const CustomerListResults = ({ customers, ...rest }: Props) => {
                 <TableRow
                   hover
                   key={customer.id}
-                  selected={selectedCustomerIds.indexOf(customer?.id) !== -1}
+                  selected={selectedCustomerIds.indexOf(customer.id) !== -1}
                 >
                   <TableCell padding="checkbox">
                     <Checkbox
-                      checked={selectedCustomerIds.indexOf(customer?.id) !== -1}
+                      checked={selectedCustomerIds.indexOf(customer.id) !== -1}
                       onChange={(event) => handleSelectOne(event, customer.id)}
                       value="true"
                     />

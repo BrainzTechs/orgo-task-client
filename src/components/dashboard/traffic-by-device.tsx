@@ -20,7 +20,7 @@ export const TrafficByDevice = (props: any) => {
     labels: ["Desktop", "Tablet", "Mobile"],
   };
 
-  const options = {
+  const options: any = {
     animation: false,
     cutoutPercentage: 80,
     layout: { padding: 0 },
@@ -74,9 +74,7 @@ export const TrafficByDevice = (props: any) => {
             position: "relative",
           }}
         >
-          {/* eslint-disable */}
           <Doughnut data={data} options={options} />
-          {/* eslint-enable */}
         </Box>
         <Box
           sx={{

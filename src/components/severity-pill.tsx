@@ -1,6 +1,13 @@
-import { styled } from "@mui/material/styles";
+import React from "react";
+import { styled, Theme } from "@mui/material/styles";
 
-const SeverityPillRoot = styled("span")(({ theme, ownerState }: any) => {
+interface SeverityPillProps {
+  ownerState: {
+    color: "primary" | "secondary" | "error" | "info" | "warning" | "success";
+  };
+}
+
+const SeverityPillRoot = styled("span")<SeverityPillProps>(({ theme, ownerState }) => {
   const backgroundColor = theme.palette[ownerState.color].main;
   const color = theme.palette[ownerState.color].contrastText;
 
@@ -27,7 +34,7 @@ const SeverityPillRoot = styled("span")(({ theme, ownerState }: any) => {
   };
 });
 
-export const SeverityPill = (props: Props) => {
+export const SeverityPill: React.FC<Props> = (props) => {
   const { color = "primary", children, ...other } = props;
 
   const ownerState = { color };

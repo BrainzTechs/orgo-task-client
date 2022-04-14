@@ -21,7 +21,8 @@
       "@/icons/*": ["src/icons/*"],
       "@/theme/*": ["src/theme/*"],
       "@/utils/*": ["src/utils/*"],
-      "@/types/*": ["src/types/*"]
+      "@/types/*": ["src/types/*"],
+      "@/mocks/*": ["src/__mocks__/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
